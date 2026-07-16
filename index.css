@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  .dark {
+    color-scheme: dark;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-ink-50 text-ink-900 antialiased dark:bg-ink-950 dark:text-ink-100;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    @apply bg-brand-500/30;
+  }
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-ink-300 dark:bg-ink-700;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-ink-400 dark:bg-ink-600;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/40 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-ink-900/60;
+  }
+  .glass-strong {
+    @apply border border-white/50 bg-white/80 backdrop-blur-2xl dark:border-white/10 dark:bg-ink-900/80;
+  }
+  .glass-card {
+    @apply glass rounded-2xl shadow-glass transition-all duration-300;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-ink-950 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white shadow-lg shadow-brand-600/25 hover:bg-brand-700 hover:shadow-brand-600/40 active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800;
+  }
+  .btn-outline {
+    @apply btn border border-ink-200 bg-white/60 text-ink-700 hover:border-brand-400 hover:text-brand-600 dark:border-ink-700 dark:bg-ink-900/60 dark:text-ink-200 dark:hover:border-brand-500;
+  }
+  .input {
+    @apply w-full rounded-xl border border-ink-200 bg-white/70 px-4 py-2.5 text-sm text-ink-900 placeholder-ink-400 shadow-sm transition-all focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30 dark:border-ink-700 dark:bg-ink-900/70 dark:text-ink-100 dark:placeholder-ink-500;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-ink-700 dark:text-ink-300;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-semibold;
+  }
+  .section {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .gradient-text {
+    @apply bg-gradient-to-r from-brand-600 via-brand-500 to-cyan-500 bg-clip-text text-transparent dark:from-brand-400 dark:via-cyan-400;
+  }
+  .grid-bg {
+    @apply bg-grid-light dark:bg-grid-dark;
+    background-size: 40px 40px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+}
